@@ -47,17 +47,46 @@ function App() {
     //   .from('.content-wrapper', { duration: 1, autoAlpha: 0 })
     //   .from('.bcg', { duration: 2, y: '-30%' }, 0);
 
-    gsap.to(['#intro h1', '#intro p'], {
-      autoAlpha: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#intro .content',
-        pin: true,
-        scrub: true,
-        markers: true,
-        start: 'top top+=5%',
-      },
+    // gsap.to(['#intro h1', '#intro p'], {
+    //   autoAlpha: 0,
+    //   ease: 'none',
+    //   scrollTrigger: {
+    //     trigger: '#intro .content',
+    //     pin: true,
+    //     scrub: true,
+    //     markers: true,
+    //     start: 'top top+=5%',
+    //   },
+    // });
+
+    const project = document.querySelectorAll('.project');
+    console.log(project);
+
+    project.forEach((el) => {
+      gsap.from(el, {
+        opacity: 0,
+        yPercent: 5,
+        scrollTrigger: {
+          trigger: el.querySelector('img'),
+          start: 'top bottom-=300',
+          end: 'top center',
+          toggleActions: 'play none none reverse',
+          markers: true,
+        },
+      });
     });
+
+    // gsap.from('.project', {
+    //   opacity: 0,
+    //   yPercent: 5,
+    //   scrollTrigger: {
+    //     trigger: '.project img',
+    //     start: 'top bottom-=300',
+    //     end: 'top center',
+    //     markers: true,
+    //     toggleActions: 'play none none reverse',
+    //   },
+    // });
   }, []);
 
   return (
