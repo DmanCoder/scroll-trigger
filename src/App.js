@@ -9,9 +9,20 @@ import image4 from './img/img_project03-icon.svg';
 
 import './App.css';
 
+gsap.registerPlugin(ScrollTrigger);
+
 function App() {
   useEffect(() => {
-    gsap.to('#intro img', { duration: 1, opacity: 0 });
+    gsap.to('#intro img', {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '#intro',
+        start: 'top top',
+        end: 'bottom center',
+        scrub: true,
+        markers: true,
+      },
+    });
   }, []);
 
   return (
