@@ -13,16 +13,39 @@ gsap.registerPlugin(ScrollTrigger);
 
 function App() {
   useEffect(() => {
-    gsap.to('#intro img', {
-      opacity: 0,
+    // gsap.to('#intro img', {
+    //   opacity: 0,
+    //   scrollTrigger: {
+    //     trigger: '#intro',
+    //     start: 'top top',
+    //     end: 'bottom center',
+    //     scrub: true,
+    //     markers: true,
+    //   },
+    // });
+
+    // gsap.set('#project02', {
+    //   scrollTrigger: {
+    //     trigger: '#project02',
+    //     start: 'top bottom-=150',
+    //     end: 'bottom center-=150',
+    //     toggleClass: 'active',
+    //     markers: true,
+    //   },
+    // });
+
+    const parallaxTl = gsap.timeline({
+      ease: 'none',
       scrollTrigger: {
-        trigger: '#intro',
-        start: 'top top',
-        end: 'bottom center',
+        trigger: '.bcg-parallax',
+        start: 'top bottom',
         scrub: true,
-        markers: true,
       },
     });
+
+    parallaxTl
+      .from('.content-wrapper', { duration: 1, autoAlpha: 0 })
+      .from('.bcg', { duration: 2, y: '-30%' }, 0);
   }, []);
 
   return (
